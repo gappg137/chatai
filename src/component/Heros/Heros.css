@@ -1,0 +1,46 @@
+.MainHero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    height:500px ;
+    left: 300px;
+    padding: 50px;
+}
+
+
+
+.signup {
+    padding: 45px;
+    margin-right: 45%;
+}
+
+
+
+
+.welcome{
+  color: #fff;
+  font-style: italic;
+  margin-left: 20%;
+  margin-right: -10%;
+
+}
+
+
+.signin {
+    padding-left: 100px;
+     
+  }
+  
+
+
+
+  .Sign-Up .a1{
+   font: 400;
+   color:burlywood ;
+  }
+
+  .Sign-In .a2{
+    font: 400;
+    color: burlywood;
+  }
