@@ -1,11 +1,11 @@
 import React from 'react'
-
+import './login.css'
 export const Login = () => {
   return (
-    <div>
+    <div className='wrapper'>
         
         
-        <form className='addUerForm'>
+        <form action="">
         <h1>Hello Good Afternoon</h1>
         <div>
             <label htmlFor='email'>email:</label>
