@@ -14,7 +14,7 @@ const ChatAINavBar = () => {
     return (
         <nav className="chatAI">
       <div className="navbar-center">ChatAI</div>
-          <div class="bi bi-three-dots">
+          <div class="three-dots">
             <img className="menu-Src" src={require('../../3dots.png')}
             alt="menu-btn"
             onClick={() => setMenuOpen(!isMenuOpen)}

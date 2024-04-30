@@ -1,21 +1,28 @@
 .chatAI {
     background-color: #333;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1400px;
+    width: 100%;
     
   }
   .navbar-center {
     color: white;
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: 1000;
+    
     text-align: center;
+    margin-left: 40px;
   }
   
   .navbar-top {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .three-dots{
+    margin-right: 35px;
   }
   
   .dropdown-button {
