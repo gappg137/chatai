@@ -6,16 +6,18 @@ import { Link } from 'react-router-dom'
 import { Signup } from '../signup/Signup'
 import Signin from '../signin/Signin'
 import Login from '../Login/Login';
+import Register from '../Register/Register'
 const Heros = () => {
   const [sin,setsined] = useState(false)
   const [su,setsuped] = useState(false)
+  const [reg,setreg] = useState(false)
   return (
     <div className='MainHero'>
       <div className='welcome'><h1>Welcome to ChatAI</h1></div>
       <div className='subword'><h3>Where everything gets Breezy!</h3></div>
-       <Login/>
-  
-       
+
+      <Login/>
+       {/* <Register/> */}
     </div>
 
   )

@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <>
     <div className="wrapper">
-        <form action="">
+        <form action="" >
           <h1>Login</h1>
           <div className="input-box"> 
           <input className= 'usr'type='text' placeholder='Username' required /> 
@@ -21,9 +21,9 @@ const Login = () => {
           <button type='submit'> Login </button>
           
           <div className='forget-password'>
-            <a className='forget-password' href="/"> Forgot Password?</a> 
+            <a className='forget-password' href="/forgetpwd"> Forgot Password?</a> 
           </div>
-          <div className='register'> Don't have an account ? <a className="register1" href="/">Register </a></div>
+          <div className='register'> Don't have an account ? <a className="register1" href="/register">Register </a></div>
         </form>
       </div>
     </>

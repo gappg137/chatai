@@ -15,7 +15,7 @@ const Home = () => {
     <div>
     <ChatAINavBar/>
       <Heros/>
-      <Contacts/>
+      {/* <Contacts/> */}
     </div>
   )
 }
