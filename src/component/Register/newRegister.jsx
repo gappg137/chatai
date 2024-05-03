@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaUserCircle} from "react-icons/fa";
 // import { FaLock } from "react-icons/fa";
-import './Register.css'
+// import './login/Login.css'
 import ChatAINavBar from '../Navbar/Navbar';
 
 import { FaInfoCircle, FaLock, FaUser } from 'react-icons/fa'
