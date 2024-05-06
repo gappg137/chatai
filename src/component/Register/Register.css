@@ -1,4 +1,4 @@
-.pageregister {
+.register {
     width: 260px;
     background: transparent;
     border: 2px solid rgba(255,255,255, .2);
@@ -19,11 +19,12 @@
   }
 
  
-  .pageregister .input-box1{
+   .input-box1{
     position: relative;
     width: 100%;
     height: 50px;
     margin:  5px 0;
+
 
   }
 
@@ -32,7 +33,14 @@
       color: #fff;
 
   }
-  .pageregister button{
+
+.s1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  
+}
+  .register button{
     position: relative;
     margin-left: 5%;
     border-radius: 10px;
@@ -46,7 +54,7 @@
 
 .icon1{
     position: absolute;
-    right: 32px;
+    right: 20px;
     top: 30%;
     transform: translateY(-50%);
     font-size: 20px;

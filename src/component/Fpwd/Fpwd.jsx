@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaLock, FaUserCircle } from 'react-icons/fa'
 
 const Fpwd = () => {
   return (

@@ -3,8 +3,15 @@ import { FaUserCircle} from "react-icons/fa";
 // import { FaLock } from "react-icons/fa";
 import './Register.css'
 import ChatAINavBar from '../Navbar/Navbar';
-
 import { FaInfoCircle, FaLock, FaUser } from 'react-icons/fa'
+
+
+
+
+
+
+
+
 const Register = () => {
 
   const [username,setUsername] = useState()

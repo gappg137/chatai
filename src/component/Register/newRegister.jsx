@@ -5,7 +5,7 @@ import { FaUserCircle} from "react-icons/fa";
 import ChatAINavBar from '../Navbar/Navbar';
 
 import { FaInfoCircle, FaLock, FaUser } from 'react-icons/fa'
-const Register = () => {
+const NewRegister = () => {
 
   const [username,setUsername] = useState()
   const [pwd, setPwd] = useState()
@@ -51,4 +51,4 @@ const Register = () => {
 }
 
 
-export default Register
+export default NewRegister;

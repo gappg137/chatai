@@ -12,11 +12,23 @@ import { RouterProvider,createBrowserRouter } from 'react-router-dom';
 import  {Signup}  from './component/signup/Signup';
 import Signin from './component/signin/Signin';
 import Register from './component/Register/Register';
+import NewRegister from './component/Register/NewRegister';
+import Fpwd from './component/Fpwd/Fpwd';
+
+
+
+
+
+
+
+
 const router = createBrowserRouter([
   {path:"/",element:<Home/>},
   {path:"/register",element:<Register/>},
   {path:"/signup",element:<Signup/>},
-  {path:"/signin",element:<Signin/>}
+  {path:"/signin",element:<Signin/>},
+  {path:"/Nregister",element:<NewRegister/>},
+  {path:"/forgetpwd", element:<Fpwd/>}
 ])
 
 

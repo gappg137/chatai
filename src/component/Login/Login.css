@@ -1,5 +1,5 @@
 .wrapper {
-    width: 420px;
+    width: 300px;
     background: transparent;
     border: 2px solid rgba(255,255,255, .2);
     backdrop-filter: blur(30px);
@@ -48,6 +48,8 @@ justify-content: space-between;
 margin-top: 4%;
 }
 
+
+
 .wrapper .forget-password {
   display: flex;
   justify-content: space-between;
@@ -61,7 +63,23 @@ margin-top: 4%;
 
 .wrapper .register1 {
   color: green;
+  cursor: pointer;
+ 
+
 }  
+
+.register .register1 {
+  color: green;
+  cursor: pointer;
+ 
+
+}
+  .wrapper  .pwd1 {
+  width: 225px;
+  height: 30px;
+  border-radius: 10px;
+  border-color:silver; 
+}
 
 /* .wrapper .input-box1{
 
@@ -86,7 +104,7 @@ margin-top: 4%;
 
 .input-box .icon1{
   position: absolute;
-  right: 240px;
+  right: 75px;
   top: 30%;
   transform: translateY(-50%);
   font-size: 20px;
@@ -95,9 +113,8 @@ margin-top: 4%;
 
 .input-box .icon2{
   position: absolute; 
-  right: 240px;
+  right: 75px;
   top: 30%;
   transform: translateY(-50%);
   font-size: 20px;
-
 }

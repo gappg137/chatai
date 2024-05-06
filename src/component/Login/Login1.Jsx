@@ -1,24 +1,9 @@
-import React, { useState } from 'react'
-import { FaUserCircle} from "react-icons/fa";
-import { FaLock } from "react-icons/fa";
-import './Login.css'
+import React from 'react'
 
-
-const Login = () => {
-
-  const [username,setUsername] = useState()
-  const [pwd, setPwd] = useState()
-
-
-  const submitForm = () => 
-  {
-      console.log(username + '' +pwd)
-
-  }
-
-  return (
-    <>
-    <div className="wrapper">
+const Login = ({ onRegisterClick }) => {
+    return (
+      <div>
+        <h2>Login</h2>
         <form action="" >
           <h1>Login</h1>
           <div className="input-box"> 
@@ -45,12 +30,20 @@ const Login = () => {
         
         
         </form>
+        <p>
+          Don't have an account? <button onClick={onRegisterClick}>Register</button>
+        </p>
       </div>
+    );
+  };
 
-      
-    </>
+
+
+
+
+export const Login1 = () => 
+
+  return (
+    <div>Login1</div>
   )
 }
-
-
-export default Login
