@@ -11,7 +11,7 @@
 }
 
 .passwordchange .input-boxpwd .fpwd{
-    width: 225px;
+    width: 100%;
     height: 30px;
     border-radius: 10px;
     border-color:silver; 
@@ -26,9 +26,9 @@
 
 .passwordchange .icon2pwd, .icon1pwd{
 
-    position: absolute;
-    right: 33px;
-    top: 30%;
+    position: relative;
+    right: -280px;
+    top: -27px;
     transform: translateY(-50%);
     font-size: 20px;
 }

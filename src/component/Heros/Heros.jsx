@@ -8,6 +8,7 @@ import Signin from '../signin/Signin'
 import Login from '../Login/Login';
 import NewRegister from '../Register/NewRegister'
 import LoginPage from '../Login/LoginPage'
+import Loader from '../Loader/Loader'
 
 
 const Heros = () => {
@@ -30,6 +31,7 @@ const Heros = () => {
       <div className='welcome'><h1>Welcome to ChatAI</h1></div>
       <div className='subword'><h3>Where everything gets Breezy!</h3></div>
        <LoginPage /> 
+       <Loader/>
     </div>
   );
 
