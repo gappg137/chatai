@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaUserCircle} from "react-icons/fa";
 import { FaLock,FaUser } from "react-icons/fa";
 import './Login.css'
 import '../Register/Register.css'
 import '../Fpwd/Fpwd.css'
+import Loader from '../Loader/Loader';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = ({ onRegisterClick,onPasswordChangeClick  }) => {
-    const [username,setUsername] = useState()
-    const [pwd, setPwd] = useState()
+    const [username1,setUsername] = useState('')
+    const [pwd1, setPwd] = useState('')
     const submitForm = () => 
         {
-            console.log(username + '' +pwd)
+            console.log(username1 + '' +pwd1)
       
         }
   return (
@@ -51,10 +54,84 @@ const Login = ({ onRegisterClick,onPasswordChangeClick  }) => {
 
 const Register = ({ onLoginClick }) => {
 
-    const [username,setUsername] = useState()
-    const [pwd, setPwd] = useState()
-  
-  
+    const [username,setUsername] = useState("");
+    const [pwd, setPwd] = useState("");
+    
+    const [formData,setData] = useState(
+      {
+        usrname:'',
+        password:'',
+        repassword:''
+
+      }
+    );
+
+    const [errors,setError] = useState({});
+    // const handleChange=(e) => {
+    //    setData({...formData,[e.target.name]:e.target.value})
+    // };
+
+
+    const handleUsernameChange = (e) => {
+          setData({...formData,usrname:e.target.value})
+          console.log(e.target.value);
+          
+    }
+
+    const handlePwdChange = (e) => {
+          setData({...formData,password:e.target.value})
+          //console.log(e.target.value);
+    }
+
+    const handleRePwdChange = (e) => {
+          setData({...formData,repassword:e.target.value})
+          //console.log(e.target.value);
+        }
+    const validatePassword=() => {
+      const[password,repassword]=formData;
+      const errors = {};
+
+      if(password !== repassword)
+        {
+          toast.error("Passwords do not match");
+          return false;
+        }
+
+      const passwordRegex=/^(?=.*\d)(?=.*[a-z](?=.*[A-Z])(?=.*[^a-zA-Z0-9]))/;
+
+      if(!passwordRegex.test(password))
+        {
+          toast.error("Password must contain atleast 8 characters including one uppercase letter, one lowercase letter, one number, and special character");
+          return  false; 
+        }
+        //setError(errors);
+        //return Object.keys(errors).length===0;
+        return true;
+    }
+
+    const handleSubmit = async (e) => {
+
+
+    // if (e)
+    //   alert("HI")
+      //e.preventDefault();
+
+      if(validatePassword)
+        {
+          try {
+            
+            await axios.post("http://localhost:8083/x/api",  {
+              username:formData.usrname,
+              password:formData.password
+          });
+          console.log("Registration Successful");
+
+          } catch (error) {
+          console.log("Registration failed",error);            
+          }
+        }
+    }
+
     const submitForm = () => 
     {
         console.log(username + '' +pwd)
@@ -64,29 +141,27 @@ const Register = ({ onLoginClick }) => {
     <div className="register" >
 
 
-<form action="">
+<form action=''>
           <h1>New Register</h1>
           <div className="input-box1"> 
-          <input className= 'usr1' type='text' placeholder='Username' required/> 
+          <input className= 'usr1' name='username' onChange={handleUsernameChange} value={formData.usrname} type='text' placeholder='Username'  required/> 
           <FaUser className='icon1'/>
           </div>
 
           <div className="input-box1">
-            <input className='pwd1' type="password" placeholder='Password' required/>
+            <input className='pwd1' type="password" onChange={handlePwdChange} value={formData.password} placeholder='Password'   required/>
              <FaLock  className='icon1'/>
-          
+
           </div>
 
           <div className="input-box1">
-            <input className='pwd2' type="password" placeholder='Re-Password' required/>
+            <input className='pwd2' type="password" onChange={handleRePwdChange} value={formData.repassword} placeholder='Re-Password'  required />
            <div className='icon1'> <FaLock /></div>
-          
+
           </div>
-          <button  type='submit'> Register </button>
-          
-
+          <button  type='submit' onClick={handleSubmit}> Register </button>
         </form>
-
+        <ToastContainer/>
         <span className='s1'> Back to Login <a className="register1" onClick={onLoginClick} >Login </a></span>
 
       {/* <h2>Register</h2> */}
@@ -142,6 +217,17 @@ const LoginPage = () => {
     const [showLogin, setShowLogin] = useState(true);
     const [showRegister, setShowRegister] = useState(false);
     const [showPasswordChange, setShowPasswordChange] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      // Simulate a delay to hide the loader after some time (e.g., 3 seconds)
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+  
+      // Clean up the timer
+      return () => clearTimeout(timer);
+    }, []);
   
     const handleRegisterClick = () => {
       setShowLogin(false);
@@ -163,9 +249,12 @@ const LoginPage = () => {
   
     return (
       <div>
-        {showLogin && <Login onRegisterClick={handleRegisterClick} onPasswordChangeClick={handlePasswordChangeClick} />}
+        {/* {showLogin && <Login onRegisterClick={handleRegisterClick} onPasswordChangeClick={handlePasswordChangeClick} />}
         {showRegister && <Register onLoginClick={handleLoginClick} />}
-        {showPasswordChange && <PasswordChangeForm onLoginClick={handleLoginClick} />}
+        {showPasswordChange && <PasswordChangeForm onLoginClick={handleLoginClick} />} */}
+        {loading ? <Loader /> :showLogin && <Login onRegisterClick={handleRegisterClick} onPasswordChangeClick={handlePasswordChangeClick} />}
+        {loading ? <Loader /> :showRegister && <Register onLoginClick={handleLoginClick} />}
+        {loading ? <Loader /> :showPasswordChange && <PasswordChangeForm onLoginClick={handleLoginClick} />}
       </div>
     );
   };
