@@ -11,8 +11,9 @@ import Contacts from './component/Contacts/Contacts';
 import { RouterProvider,createBrowserRouter } from 'react-router-dom';
 import  {Signup}  from './component/signup/Signup';
 import Signin from './component/signin/Signin';
-import Register from './component/Register/Register';
-import NewRegister from './component/Register/NewRegister';
+import Register from './component/Register/newRegister'
+import NewRegister from './component/Register/newRegister';
+
 import Fpwd from './component/Fpwd/Fpwd';
 
 

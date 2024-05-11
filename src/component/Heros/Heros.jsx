@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { Signup } from '../signup/Signup'
 import Signin from '../signin/Signin'
 import Login from '../Login/Login';
-import NewRegister from '../Register/NewRegister'
+import NewRegister from '../Register/newRegister'
 import LoginPage from '../Login/LoginPage'
 import Loader from '../Loader/Loader'
 

@@ -6,7 +6,13 @@ import '../Register/Register.css'
 import '../Fpwd/Fpwd.css'
 import Loader from '../Loader/Loader';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { signUp } from '../Services/user-service';
+import { BASE_URL } from '../Services/Helper';
+
+
+
 
 const Login = ({ onRegisterClick,onPasswordChangeClick  }) => {
     const [username1,setUsername] = useState('')
@@ -40,7 +46,7 @@ const Login = ({ onRegisterClick,onPasswordChangeClick  }) => {
           <button type='submit' onClick={submitForm}> Login </button>
 </form>
 <div className='forget-password'>
-            <a className='forget-password' onClick={onPasswordChangeClick}> Forgot Password?</a> 
+          <a className='forget-password' onClick={onPasswordChangeClick}> Forgot Password?</a> 
           </div>
           <div > Don't have an account ? <a className="register1" onClick={onRegisterClick} >Register </a></div>
       {/* <h2>Login</h2> */}
@@ -54,112 +60,117 @@ const Login = ({ onRegisterClick,onPasswordChangeClick  }) => {
 
 const Register = ({ onLoginClick }) => {
 
-    const [username,setUsername] = useState("");
-    const [pwd, setPwd] = useState("");
+    const [username,setUsername] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [repwd, setRePwd] =useState('');
+    const [error,setError] = useState(false)
+
+    // const [err1, setErr] =useState('');
     
-    const [formData,setData] = useState(
+    //const [user,setUser] = useState({username:'', password:'',repassword:''});
+ 
+
+
+    // const validatePassword=() => {
+    //   const[password,repassword]=formData;
+    //   const errors = {};
+
+    //   if(password !== repassword)
+    //     {
+    //       toast.error("Passwords do not match");
+    //       return false;
+    //     }
+
+    //   const passwordRegex=/^(?=.*\d)(?=.*[a-z](?=.*[A-Z])(?=.*[^a-zA-Z0-9]))/;
+
+    //   if(!passwordRegex.test(password))
+    //     {
+    //       toast.error("Password must contain atleast 8 characters including one uppercase letter, one lowercase letter, one number, and special character");
+    //       return  false; 
+    //     }
+    //     //setError(errors);
+    //     //return Object.keys(errors).length===0;
+    //     return true;
+    // }
+
+    const handleSubmit =  (e) => {
+      e.preventDefault();
+      if (username.length==0 || pwd.length==0 || repwd.length==0)
+        {
+          toast.error("Enter Credentials")
+        }
+
+
+      fetch('http://localhost:8081/x/register',
+
+
+
+
+
+
+
       {
-        usrname:'',
-        password:'',
-        repassword:''
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(username,pwd,repwd),
+      })
+      .then(response => response.json())
+      .then(data => console.log('User created',data))
+      .catch(error => 
+        console.error('Error creating user:', error));
 
-      }
-    );
-
-    const [errors,setError] = useState({});
-    // const handleChange=(e) => {
-    //    setData({...formData,[e.target.name]:e.target.value})
-    // };
-
-
-    const handleUsernameChange = (e) => {
-          setData({...formData,usrname:e.target.value})
-          console.log(e.target.value);
-          
-    }
-
-    const handlePwdChange = (e) => {
-          setData({...formData,password:e.target.value})
-          //console.log(e.target.value);
-    }
-
-    const handleRePwdChange = (e) => {
-          setData({...formData,repassword:e.target.value})
-          //console.log(e.target.value);
-        }
-    const validatePassword=() => {
-      const[password,repassword]=formData;
-      const errors = {};
-
-      if(password !== repassword)
-        {
-          toast.error("Passwords do not match");
-          return false;
-        }
-
-      const passwordRegex=/^(?=.*\d)(?=.*[a-z](?=.*[A-Z])(?=.*[^a-zA-Z0-9]))/;
-
-      if(!passwordRegex.test(password))
-        {
-          toast.error("Password must contain atleast 8 characters including one uppercase letter, one lowercase letter, one number, and special character");
-          return  false; 
-        }
-        //setError(errors);
-        //return Object.keys(errors).length===0;
-        return true;
-    }
-
-    const handleSubmit = async (e) => {
+    };
 
 
-    // if (e)
-    //   alert("HI")
-      //e.preventDefault();
-
-      if(validatePassword)
-        {
-          try {
-            
-            await axios.post("http://localhost:8083/x/api",  {
-              username:formData.usrname,
-              password:formData.password
-          });
-          console.log("Registration Successful");
-
-          } catch (error) {
-          console.log("Registration failed",error);            
-          }
-        }
-    }
-
-    const submitForm = () => 
+    const handleChange = (e) =>
     {
-        console.log(username + '' +pwd)
-  
-    }
+
+      const {name, value} = e.target;
+      console.log('Name:', name, 'Value:', value);
+      //setUser(prevUser => ({...prevUser, [name]:value}))
+    };
   return (
     <div className="register" >
 
 
-<form action=''>
+<form onSubmit={handleSubmit}>
           <h1>New Register</h1>
           <div className="input-box1"> 
-          <input className= 'usr1' name='username' onChange={handleUsernameChange} value={formData.usrname} type='text' placeholder='Username'  required/> 
+          <input className= 'usr1' 
+          name='username'   
+          type='text' 
+          placeholder='Username'  
+          id='name' 
+          onChange={e=> setUsername(e.target.value)} 
+          // value={formData.usrname} 
+          //onInvalid={error.errors?.resp?.formData?.usrname? true:false}
+          required/> 
           <FaUser className='icon1'/>
           </div>
 
           <div className="input-box1">
-            <input className='pwd1' type="password" onChange={handlePwdChange} value={formData.password} placeholder='Password'   required/>
+            <input className='pwd1' 
+            type="password"
+            
+            placeholder='Password'   
+            onChange={e => setPwd(e.target.value)}
+            required/>
              <FaLock  className='icon1'/>
 
           </div>
 
           <div className="input-box1">
-            <input className='pwd2' type="password" onChange={handleRePwdChange} value={formData.repassword} placeholder='Re-Password'  required />
+            <input className='pwd2' 
+            type="password"
+            onChange={e => setRePwd(e.target.value)}
+            placeholder='Re-Password'  
+            required />
            <div className='icon1'> <FaLock /></div>
 
           </div>
-          <button  type='submit' onClick={handleSubmit}> Register </button>
+          <button  type='submit' > Register </button>
         </form>
         <ToastContainer/>
         <span className='s1'> Back to Login <a className="register1" onClick={onLoginClick} >Login </a></span>

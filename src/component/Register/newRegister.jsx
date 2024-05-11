@@ -4,6 +4,8 @@ import { FaUserCircle} from "react-icons/fa";
 // import './login/Login.css'
 import ChatAINavBar from '../Navbar/Navbar';
 
+
+
 import { FaInfoCircle, FaLock, FaUser } from 'react-icons/fa'
 const NewRegister = () => {
 
