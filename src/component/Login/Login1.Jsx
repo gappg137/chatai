@@ -42,8 +42,8 @@ const Login = ({ onRegisterClick }) => {
 
 
 export const Login1 = () => 
-
+{}
   return (
     <div>Login1</div>
   )
-}
+

@@ -30,7 +30,7 @@ const Heros = () => {
     <div className='MainHero'>
       <div className='welcome'><h1>Welcome to ChatAI</h1></div>
       <div className='subword'><h3>Where everything gets Breezy!</h3></div>
-       <LoginPage /> 
+       <LoginPage/>
        {/* <Loader/> */}
     </div>
   );
