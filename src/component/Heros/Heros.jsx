@@ -7,7 +7,7 @@ import { Signup } from '../signup/Signup'
 import Signin from '../signin/Signin'
 import Login from '../Login/Login';
 import NewRegister from '../Register/newRegister'
-import LoginPage from '../Login/LoginPage'
+import LoginPage from  '../Login/LoginPage'
 import Loader from '../Loader/Loader'
 
 
