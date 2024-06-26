@@ -191,7 +191,7 @@ const Register = () => {
           />
           <div className='icon1'><FaLock /></div>
         </div>
-        <button type='submit'>Register</button>
+          <button type='submit' disabled={isSubmitDisabled}>Register</button>
       </form>
 
       <span className='s1'> Back to home <a className="register1" href='/'>Home</a></span>
