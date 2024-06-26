@@ -1,6 +1,10 @@
 import React from 'react'
 import './MessageList.css'
 
+
+
+/* MessageList acts bubble component to display incoming and outgoing messages  */
+
 const MessageList = ({messages,currentUser}) => {
   return (
 <div className="message-list">
